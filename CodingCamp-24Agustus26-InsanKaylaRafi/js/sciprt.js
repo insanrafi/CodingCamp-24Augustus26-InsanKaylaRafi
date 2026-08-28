@@ -42,3 +42,54 @@ updateDateTime();
 
 
 setInterval(updateDateTime, 1000);
+
+
+
+let timer;
+let timeLeft = 25 * 60; 
+let isRunning = false;
+
+const timerDisplay = document.getElementById("timerDisplay");
+const startTimerBtn = document.getElementById("startTimer");
+const stopTimerBtn = document.getElementById("stopTimer");
+const resetTimerBtn = document.getElementById("resetTimer");
+
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    
+   
+    timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+
+startTimerBtn.addEventListener("click", () => {
+    if (!isRunning) {
+        isRunning = true;
+        timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(timer);
+                isRunning = false;
+                alert("Waktu fokus selesai! Istirahat dulu ya.");
+            }
+        }, 1000);
+    }
+});
+
+
+stopTimerBtn.addEventListener("click", () => {
+    clearInterval(timer);
+    isRunning = false;
+});
+
+
+resetTimerBtn.addEventListener("click", () => {
+    clearInterval(timer);
+    isRunning = false;
+    timeLeft = 25 * 60; 
+    updateTimerDisplay();
+});
