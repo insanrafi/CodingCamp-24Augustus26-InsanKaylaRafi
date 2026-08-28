@@ -1,0 +1,272 @@
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+
+
+
+header {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+
+
+
+.dashboard {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+
+
+section {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    border: 1px solid #e5e7eb;
+}
+
+section h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+
+
+
+.greeting-card {
+    grid-column: span 2;
+}
+
+.greeting-card h2 {
+    font-size: 30px;
+}
+
+.greeting-card p {
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.clock {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 15px 0 20px;
+}
+
+
+
+.name-section {
+    display: flex;
+    gap: 10px;
+}
+
+.name-section input {
+    flex: 1;
+}
+
+
+
+
+.timer-card {
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 64px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #6b7280;
+}
+
+
+
+
+button {
+    border: none;
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    background: #111827;
+    color: white;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+
+
+.todo-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-input input {
+    flex: 1;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    background: #f9fafb;
+
+    border-radius: 10px;
+
+    border: 1px solid #e5e7eb;
+}
+
+li button {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+
+
+
+.links-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.quick-link {
+    text-decoration: none;
+
+    padding: 12px 18px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    color: #1f2937;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.quick-link:hover {
+    transform: translateY(-2px);
+}
+
+
+
+.theme-btn {
+    background: #374151;
+}
+
+
+
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .greeting-card {
+        grid-column: span 1;
+    }
+
+    .timer-display {
+        font-size: 50px;
+    }
+
+    .name-section,
+    .todo-input {
+        flex-direction: column;
+    }
+
+    .timer-buttons {
+        flex-wrap: wrap;
+    }
+}
