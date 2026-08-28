@@ -11,74 +11,84 @@
 
 <body>
 
-    <h1>Life Dashboard</h1>
-
-    <p>Organize your day and stay focused.</p>
-
-    <!-- Greeting -->
-    <section>
-        <h2 id="greeting">Good Morning!</h2>
-        <p id="date">Monday, 24 August 2026</p>
-        <p id="clock">08:30:00</p>
-    </section>
-
-    <!-- Focus Timer -->
-    <section>
-        <h2>Focus Timer</h2>
-
+    <header>
         <div>
-            25:00
+            <h1>Life Dashboard</h1>
+            <p>Organize your day and stay focused.</p>
         </div>
+    </header>
 
-        <button>Start</button>
-        <button>Stop</button>
-        <button>Reset</button>
-    </section>
+    <div class="dashboard">
+        <!-- Greeting -->
+        <section class="greeting-card">
+            <h2 id="greeting">Good Morning!</h2>
+            <p id="date">Monday, 24 August 2026</p>
+            <p class="clock" id="clock">08:30:00</p>
+        </section>
 
-    <!-- To-Do List -->
-    <section>
-        <h2>To-Do List</h2>
+        <!-- Focus Timer -->
+        <section class="timer-card">
+            <h2>Focus Timer</h2>
 
-        <input
-            type="text"
-            placeholder="Add a new task..."
-        >
+            <div class="timer-display">
+                25:00
+            </div>
 
-        <button>Add Task</button>
+            <div class="timer-buttons">
+                <button>Start</button>
+                <button>Stop</button>
+                <button>Reset</button>
+            </div>
+        </section>
 
-        <ul>
-            <li>
-                Learn HTML
-                <button>Done</button>
-                <button>Edit</button>
-                <button>Delete</button>
-            </li>
+        <!-- To-Do List -->
+        <section>
+            <h2>To-Do List</h2>
 
-            <li>
-                Learn JavaScript
-                <button>Done</button>
-                <button>Edit</button>
-                <button>Delete</button>
-            </li>
-        </ul>
-    </section>
+            <div class="todo-input">
+                <input
+                    type="text"
+                    placeholder="Add a new task..."
+                >
+                <button>Add Task</button>
+            </div>
 
-    <!-- Quick Links -->
-    <section>
-        <h2>Quick Links</h2>
+            <ul>
+                <li>
+                    Learn HTML
+                    <button>Done</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </li>
 
-        <a href="https://www.google.com" target="_blank">
-            Google
-        </a>
+                <li>
+                    Learn JavaScript
+                    <button>Done</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </li>
+            </ul>
+        </section>
 
-        <a href="https://www.youtube.com" target="_blank">
-            YouTube
-        </a>
+        <!-- Quick Links -->
+        <section>
+            <h2>Quick Links</h2>
 
-        <a href="https://github.com" target="_blank">
-            GitHub
-        </a>
-    </section>
+            <div class="links-container">
+                <a href="https://www.google.com" target="_blank" class="quick-link">
+                    Google
+                </a>
+
+                <a href="https://www.youtube.com" target="_blank" class="quick-link">
+                    YouTube
+                </a>
+
+                <a href="https://github.com" target="_blank" class="quick-link">
+                    GitHub
+                </a>
+            </div>
+        </section>
+    </div>
 
     <script src="js/sciprt.js"></script>
 </body>
