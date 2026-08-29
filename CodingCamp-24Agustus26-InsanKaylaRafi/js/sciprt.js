@@ -1,4 +1,5 @@
 
+let userName = localStorage.getItem("userName") || "";
 
 function updateDateTime() {
     const now = new Date();
@@ -21,20 +22,26 @@ function updateDateTime() {
     const currentDate = now.toLocaleDateString("en-US", dateOptions);
 
     
-    let greeting;
+    let greetingText;
 
     if (now.getHours() < 12) {
-        greeting = "Good Morning!";
+        greetingText = "Good Morning";
     } else if (now.getHours() < 18) {
-        greeting = "Good Afternoon!";
+        greetingText = "Good Afternoon";
     } else {
-        greeting = "Good Evening!";
+        greetingText = "Good Evening";
+    }
+
+    if (userName) {
+        greetingText += `, ${userName}!`;
+    } else {
+        greetingText += "!";
     }
 
     
     document.getElementById("clock").textContent = currentTime;
     document.getElementById("date").textContent = currentDate;
-    document.getElementById("greeting").textContent = greeting;
+    document.getElementById("greeting").textContent = greetingText;
 }
 
 
@@ -350,3 +357,25 @@ if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
     themeToggle.textContent = "Light Mode";
 }
+
+
+
+const nameInput = document.getElementById("nameInput");
+const saveNameButton = document.getElementById("saveNameBtn");
+
+saveNameButton.addEventListener("click", function () {
+    const enteredName = nameInput.value.trim();
+
+    if (enteredName === "") {
+        alert("Please enter your name.");
+        return;
+    }
+
+    userName = enteredName;
+
+    localStorage.setItem("userName", userName);
+
+    nameInput.value = "";
+
+    updateDateTime();
+});
