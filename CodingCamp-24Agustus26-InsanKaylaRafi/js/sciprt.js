@@ -100,3 +100,46 @@ resetTimerButton.addEventListener("click", function () {
 
 
 updateTimerDisplay();
+
+
+
+const taskInput = document.getElementById("taskInput");
+const addTaskButton = document.getElementById("addTaskBtn");
+const taskList = document.getElementById("taskList");
+
+let tasks = [];
+
+addTaskButton.addEventListener("click", function () {
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+    }
+
+    const newTask = {
+        id: Date.now(),
+        text: taskText,
+        completed: false
+    };
+
+    tasks.push(newTask);
+
+    taskInput.value = "";
+
+    renderTasks();
+});
+
+function renderTasks() {
+    taskList.innerHTML = "";
+
+    tasks.forEach(function (task) {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <span>${task.text}</span>
+        `;
+
+        taskList.appendChild(li);
+    });
+}
