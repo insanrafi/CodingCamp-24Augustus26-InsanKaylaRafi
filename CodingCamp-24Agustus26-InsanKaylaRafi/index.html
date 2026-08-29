@@ -19,14 +19,14 @@
     </header>
 
     <div class="dashboard">
-        <!-- Greeting -->
+        
         <section class="greeting-card">
             <h2 id="greeting">Good Morning!</h2>
             <p id="date">Monday, 24 August 2026</p>
             <p class="clock" id="clock">08:30:00</p>
         </section>
 
-        <!-- Focus Timer -->
+        
         <section class="timer-card">
             <h2>Focus Timer</h2>
 
@@ -41,36 +41,28 @@
             </div>
         </section>
 
-        <!-- To-Do List -->
+        
         <section>
             <h2>To-Do List</h2>
 
             <div class="todo-input">
                 <input
                     type="text"
+                    id="taskInput"
                     placeholder="Add a new task..."
                 >
-                <button>Add Task</button>
+
+                <button id="addTaskBtn">
+                    Add Task
+                </button>
             </div>
 
-            <ul>
-                <li>
-                    Learn HTML
-                    <button>Done</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </li>
-
-                <li>
-                    Learn JavaScript
-                    <button>Done</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </li>
+            <ul id="taskList">
             </ul>
         </section>
+       
 
-        <!-- Quick Links -->
+        
         <section>
             <h2>Quick Links</h2>
 
