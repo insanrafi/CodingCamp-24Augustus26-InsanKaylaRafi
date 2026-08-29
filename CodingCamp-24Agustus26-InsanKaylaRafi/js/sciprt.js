@@ -124,6 +124,16 @@ addTaskButton.addEventListener("click", function () {
         return;
     }
 
+    
+    const duplicateTask = tasks.some(function (task) {
+        return task.text.toLowerCase() === taskText.toLowerCase();
+    });
+
+    if (duplicateTask) {
+        alert("This task already exists!");
+        return;
+    }
+
     const newTask = {
         id: Date.now(),
         text: taskText,
