@@ -3,14 +3,14 @@
 function updateDateTime() {
     const now = new Date();
 
-    
+   
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
     const seconds = String(now.getSeconds()).padStart(2, "0");
 
     const currentTime = `${hours}:${minutes}:${seconds}`;
 
-    
+   
     const dateOptions = {
         weekday: "long",
         day: "numeric",
@@ -31,7 +31,7 @@ function updateDateTime() {
         greeting = "Good Evening!";
     }
 
-   
+    
     document.getElementById("clock").textContent = currentTime;
     document.getElementById("date").textContent = currentDate;
     document.getElementById("greeting").textContent = greeting;
@@ -45,51 +45,58 @@ setInterval(updateDateTime, 1000);
 
 
 
-let timer;
-let timeLeft = 25 * 60; 
-let isRunning = false;
+
+let timerDuration = 25 * 60;
+let timeLeft = timerDuration;
+let timerInterval = null;
 
 const timerDisplay = document.getElementById("timerDisplay");
-const startTimerBtn = document.getElementById("startTimer");
-const stopTimerBtn = document.getElementById("stopTimer");
-const resetTimerBtn = document.getElementById("resetTimer");
+const startTimerButton = document.getElementById("startTimer");
+const stopTimerButton = document.getElementById("stopTimer");
+const resetTimerButton = document.getElementById("resetTimer");
 
 
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
-    
-   
-    timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+    timerDisplay.textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
 
-startTimerBtn.addEventListener("click", () => {
-    if (!isRunning) {
-        isRunning = true;
-        timer = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                updateTimerDisplay();
-            } else {
-                clearInterval(timer);
-                isRunning = false;
-                alert("Waktu fokus selesai! Istirahat dulu ya.");
-            }
-        }, 1000);
+startTimerButton.addEventListener("click", function () {
+    
+    if (timerInterval !== null) {
+        return;
     }
+
+    timerInterval = setInterval(function () {
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert("Focus session completed!");
+        }
+    }, 1000);
 });
 
 
-stopTimerBtn.addEventListener("click", () => {
-    clearInterval(timer);
-    isRunning = false;
+stopTimerButton.addEventListener("click", function () {
+    clearInterval(timerInterval);
+    timerInterval = null;
 });
 
 
-resetTimerBtn.addEventListener("click", () => {
-    clearInterval(timer);
-    isRunning = false;
-    timeLeft = 25 * 60; 
+resetTimerButton.addEventListener("click", function () {
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    timeLeft = timerDuration;
     updateTimerDisplay();
 });
+
+
+updateTimerDisplay();
