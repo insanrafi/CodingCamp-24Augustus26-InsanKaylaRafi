@@ -270,3 +270,8 @@ li button {
         flex-wrap: wrap;
     }
 }
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}

@@ -137,9 +137,79 @@ function renderTasks() {
         const li = document.createElement("li");
 
         li.innerHTML = `
-            <span>${task.text}</span>
+            <span class="${task.completed ? "completed" : ""}">
+                ${task.text}
+            </span>
+
+            <button onclick="completeTask(${task.id})">
+                Done
+            </button>
+
+            <button onclick="editTask(${task.id})">
+                Edit
+            </button>
+
+            <button onclick="deleteTask(${task.id})">
+                Delete
+            </button>
         `;
 
         taskList.appendChild(li);
     });
+}
+
+
+function completeTask(taskId) {
+    const task = tasks.find(function (task) {
+        return task.id === taskId;
+    });
+
+    if (task) {
+        task.completed = !task.completed;
+        renderTasks();
+    }
+}
+
+
+function editTask(taskId) {
+    const task = tasks.find(function (task) {
+        return task.id === taskId;
+    });
+
+    if (!task) {
+        return;
+    }
+
+    const newText = prompt("Edit your task:", task.text);
+
+    if (newText === null) {
+        return;
+    }
+
+    const updatedText = newText.trim();
+
+    if (updatedText === "") {
+        alert("Task cannot be empty.");
+        return;
+    }
+
+    task.text = updatedText;
+
+    renderTasks();
+}
+
+
+
+function deleteTask(taskId) {
+    const confirmed = confirm("Are you sure you want to delete this task?");
+
+    if (!confirmed) {
+        return;
+    }
+
+    tasks = tasks.filter(function (task) {
+        return task.id !== taskId;
+    });
+
+    renderTasks();
 }
