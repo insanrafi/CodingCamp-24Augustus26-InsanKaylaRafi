@@ -125,6 +125,8 @@ addTaskButton.addEventListener("click", function () {
 
     tasks.push(newTask);
 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     taskInput.value = "";
 
     renderTasks();
@@ -198,6 +200,8 @@ function editTask(taskId) {
 
     task.text = updatedText;
 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     renderTasks();
 }
 
@@ -211,8 +215,18 @@ function deleteTask(taskId) {
     }
 
     tasks = tasks.filter(function (task) {
-        return task.id !== taskId;
+     return task.id !== taskId;
     });
 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    renderTasks();
+}
+
+
+const savedTasks = localStorage.getItem("tasks");
+
+if (savedTasks) {
+    tasks = JSON.parse(savedTasks);
     renderTasks();
 }
