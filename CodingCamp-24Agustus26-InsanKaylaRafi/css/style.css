@@ -275,3 +275,37 @@ li button {
     text-decoration: line-through;
     opacity: 0.5;
 }
+
+.link-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.link-input input {
+    flex: 1;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.link-item a {
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .link-input {
+        flex-direction: column;
+    }
+}

@@ -230,3 +230,98 @@ if (savedTasks) {
     tasks = JSON.parse(savedTasks);
     renderTasks();
 }
+
+
+
+
+const linkNameInput = document.getElementById("linkNameInput");
+const linkUrlInput = document.getElementById("linkUrlInput");
+const addLinkButton = document.getElementById("addLinkBtn");
+const quickLinksList = document.getElementById("quickLinksList");
+
+let quickLinks = [];
+
+
+
+addLinkButton.addEventListener("click", function () {
+    const linkName = linkNameInput.value.trim();
+    let linkUrl = linkUrlInput.value.trim();
+
+    if (linkName === "" || linkUrl === "") {
+        alert("Please enter website name and URL.");
+        return;
+    }
+
+    
+    if (!linkUrl.startsWith("http://") && !linkUrl.startsWith("https://")) {
+        linkUrl = "https://" + linkUrl;
+    }
+
+    const newLink = {
+        id: Date.now(),
+        name: linkName,
+        url: linkUrl
+    };
+
+    quickLinks.push(newLink);
+
+    saveQuickLinks();
+
+    linkNameInput.value = "";
+    linkUrlInput.value = "";
+
+    renderQuickLinks();
+});
+
+
+
+function renderQuickLinks() {
+    quickLinksList.innerHTML = "";
+
+    quickLinks.forEach(function (link) {
+        const linkItem = document.createElement("div");
+
+        linkItem.classList.add("link-item");
+
+        linkItem.innerHTML = `
+            <a href="${link.url}" target="_blank">
+                ${link.name}
+            </a>
+
+            <button onclick="deleteQuickLink(${link.id})">
+                Delete
+            </button>
+        `;
+
+        quickLinksList.appendChild(linkItem);
+    });
+}
+
+
+
+function deleteQuickLink(linkId) {
+    quickLinks = quickLinks.filter(function (link) {
+        return link.id !== linkId;
+    });
+
+    saveQuickLinks();
+    renderQuickLinks();
+}
+
+
+
+function saveQuickLinks() {
+    localStorage.setItem(
+        "quickLinks",
+        JSON.stringify(quickLinks)
+    );
+}
+
+
+
+const savedQuickLinks = localStorage.getItem("quickLinks");
+
+if (savedQuickLinks) {
+    quickLinks = JSON.parse(savedQuickLinks);
+    renderQuickLinks();
+}

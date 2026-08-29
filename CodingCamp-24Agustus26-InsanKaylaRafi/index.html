@@ -62,22 +62,29 @@
         </section>
        
 
-        
+
         <section>
             <h2>Quick Links</h2>
 
-            <div class="links-container">
-                <a href="https://www.google.com" target="_blank" class="quick-link">
-                    Google
-                </a>
+            <div class="link-input">
+                <input
+                    type="text"
+                    id="linkNameInput"
+                    placeholder="Website name"
+                >
 
-                <a href="https://www.youtube.com" target="_blank" class="quick-link">
-                    YouTube
-                </a>
+                <input
+                    type="text"
+                    id="linkUrlInput"
+                    placeholder="https://example.com"
+                >
 
-                <a href="https://github.com" target="_blank" class="quick-link">
-                    GitHub
-                </a>
+                <button id="addLinkBtn">
+                    Add Link
+                </button>
+            </div>
+
+            <div id="quickLinksList" class="links-container">
             </div>
         </section>
     </div>
