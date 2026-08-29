@@ -165,8 +165,11 @@ function completeTask(taskId) {
     });
 
     if (task) {
-        task.completed = !task.completed;
-        renderTasks();
+    task.completed = !task.completed;
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    renderTasks();
     }
 }
 
